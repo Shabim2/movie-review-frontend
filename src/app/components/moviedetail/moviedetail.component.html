@@ -1,0 +1,57 @@
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">{{movie.title}}
+      <small>{{movie.genre}}</small>
+    </h1>
+  
+    <!-- Portfolio Item Row -->
+    <div class="row">
+  
+      <div class="col-md-8">
+        <img class="shadow-sm img-fluid" src="{{movie.image}}" onerror="this.src='https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'" alt="" width="400" height="650">
+      </div>
+  
+      <div class="col-md-4">
+        <h3 class="my-3">Movie Plot</h3>
+        <p>{{movie.plot}}</p>
+        <h3 class="my-3">Release Date</h3>
+        <p>{{movie.releaseDate.slice(0,10)}}</p>
+        <h3 class="my-3">Movie Cast</h3>
+        <ul *ngFor="let member of cast">
+          <li>{{member}}</li>
+        </ul>
+        <h3 class="my-3">Rating</h3>
+        <ng-template #t let-fill="fill">
+            <span class="star" [class.full]="fill === 100">
+              <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+            </span>
+        </ng-template>
+        <h4>{{showRating(rating)}}</h4>
+        <ngb-rating  [max]="5" [rate]="rating" [starTemplate]="t" [readonly]="true"></ngb-rating>
+      </div>
+  
+    </div>
+    
+  
+    
+    <h3 class="my-4">Reviews</h3>
+
+    <div *ngFor="let comment of comments">
+        <div class="shadow-lg card">
+            <h5 class="card-header">{{comment.username}}</h5>
+            <div class="card-body">
+            <ngb-rating [max]="5" [rate]="comment.rating" [readonly]="true"></ngb-rating>
+            <p class="card-text">{{comment.comment}}.</p>
+            <button class="btn btn-light" *ngIf="comment.username === user.user" (click)="openEditCommentModal(comment)">Edit</button>
+            <button class="btn btn-light" *ngIf="canDelete(comment)" (click)="deleteComment(comment.id)">Delete</button>
+            </div>
+            <div class="container">
+              <a class="like" (click)="like(comment)">Like</a> 
+              <a class="dislike" (click)="dislike(comment)">Dislike</a> 
+              <input class="qty" name="qty" readonly="readonly" type="text" [value]="comment.likes" />
+            </div>
+        </div>
+    </div>
+    <button class='btn btn-light' *ngIf="showAddReview()" (click)="openAddCommentModal(comments, user, movie)">Add Review</button>
+</div>

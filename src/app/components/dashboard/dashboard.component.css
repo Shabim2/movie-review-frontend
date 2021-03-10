@@ -1,0 +1,8 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.dotted{
+    outline-style: dashed;
+}

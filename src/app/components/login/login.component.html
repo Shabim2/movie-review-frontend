@@ -1,0 +1,20 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+  
+      <!-- Login Form -->
+      <form [formGroup]="form">
+        <div *ngIf="showErrorMessage">
+            <h5 style="color: red;">Invalid username and password. Please try again</h5>
+        </div>
+        <input type="text" id="login" class="fadeIn second" name="user" placeholder="username" name="user" formControlName="user" required>
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" name="password" formControlName="password" 
+        type="password" required>
+        <input type="button" (click)="login()" class="fadeIn fourth" value="Log In">
+      </form>
+  
+      <div id="formFooter">
+        <p class="underlineHover" href="#">Movie Review App</p>
+      </div>
+  
+    </div>
+  </div>

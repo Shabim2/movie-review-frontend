@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add Review</h4>
+    <button type="button" class="close" aria-label="Close"
+     (click)="activeModal.dismiss('Cross click')">
+    </button>
+</div>
+<form [formGroup]="commentForm" (ngSubmit)="submitForm()">
+    <div class="modal-body">
+      <div class="container">
+        <div class="form-group">
+          <label for="title">Comment</label>
+          <input type="text" 
+            class="form-control"
+            formControlName="comment" required />
+        </div>
+        <div class="form-group">
+          <label for="Comment">Rating</label>
+          <div class="rating">
+            <h4 style="color:#FFD700;">{{selected}}</h4>
+            <input data-line="Great" id="star5" name="rating" type="radio" value="5" formControlName="rating" (click)="getRating($event)" class="radio-btn hide" />
+            <label for="star5">☆</label>
+            <input data-line="Good" id="star4" name="rating" type="radio" value="4" formControlName="rating" (click)="getRating($event)" class="radio-btn hide" />
+            <label for="star4">☆</label>
+            <input data-line="Okay" id="star3" name="rating" type="radio" value="3" formControlName="rating" (click)="getRating($event)" class="radio-btn hide" />
+            <label for="star3">☆</label>
+            <input data-line="Bad" id="star2" name="rating" type="radio" value="2" formControlName="rating" (click)="getRating($event)" class="radio-btn hide" />
+            <label for="star2">☆</label>
+            <input data-line="Terrible" id="star1" name="rating" type="radio" value="1" formControlName="rating" (click)="getRating($event)" class="radio-btn hide" />
+            <label for="star1">☆</label>
+            <div class="clear"></div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn"
+        [disabled]="!commentForm.valid" style="background-color: #5fbae9"> st
+        Submit Form
+      </button>
+    </div>
+</form>
+
