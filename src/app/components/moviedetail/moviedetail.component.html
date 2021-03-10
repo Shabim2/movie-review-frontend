@@ -13,11 +13,13 @@
       </div>
   
       <div class="col-md-4">
-        <h3 class="my-3">Movie Plot</h3>
+        <h3 class="my-3">Plot</h3>
         <p>{{movie.plot}}</p>
+        <h3 class="my-3">Language</h3>
+        <p>{{movie.language}}</p>
         <h3 class="my-3">Release Date</h3>
         <p>{{movie.releaseDate.slice(0,10)}}</p>
-        <h3 class="my-3">Movie Cast</h3>
+        <h3 class="my-3">Cast & Crew</h3>
         <ul *ngFor="let member of cast">
           <li>{{member}}</li>
         </ul>
@@ -27,7 +29,7 @@
               <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
             </span>
         </ng-template>
-        <h4>{{showRating(rating)}}</h4>
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{showRating(rating)}}</h4>
         <ngb-rating  [max]="5" [rate]="rating" [starTemplate]="t" [readonly]="true"></ngb-rating>
       </div>
   
@@ -42,14 +44,16 @@
             <h5 class="card-header">{{comment.username}}</h5>
             <div class="card-body">
             <ngb-rating [max]="5" [rate]="comment.rating" [readonly]="true"></ngb-rating>
-            <p class="card-text">{{comment.comment}}.</p>
+            <p class="card-text">{{comment.comment}}</p>
             <button class="btn btn-light" *ngIf="comment.username === user.user" (click)="openEditCommentModal(comment)">Edit</button>
             <button class="btn btn-light" *ngIf="canDelete(comment)" (click)="deleteComment(comment.id)">Delete</button>
             </div>
             <div class="container">
-              <a class="like" (click)="like(comment)">Like</a> 
-              <a class="dislike" (click)="dislike(comment)">Dislike</a> 
-              <input class="qty" name="qty" readonly="readonly" type="text" [value]="comment.likes" />
+              <a class="like" (click)="like(comment)">	
+                &#9757;</a> 
+              <label class="qty">&nbsp;{{comment.likes}}&nbsp;</label>
+              <a class="dislike" (click)="dislike(comment)">	
+                &#9759;</a> 
             </div>
         </div>
     </div>

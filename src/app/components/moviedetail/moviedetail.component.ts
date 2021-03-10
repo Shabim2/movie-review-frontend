@@ -47,10 +47,7 @@ export class MoviedetailComponent implements OnInit {
   }
 
   showAddReview(){
-    let flag = false;
-    if (this.comments.length === 0){
-      return true
-    }
+    let flag = true;
     for (let a of this.comments){
       if (a.username === this.user.user){
         return false;

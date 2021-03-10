@@ -1,5 +1,9 @@
-<div class ="d-flex justify-content-center">
-<input [(ngModel)]='searchQuery' class="input-group-text" type="text" id="myInput" placeholder="Search by genre or title..." title="Type in a name">
+<div class ="container d-flex justify-content-center">
+  <div class="input-group col-md-4 form-inline">
+    <input [(ngModel)]='searchQuery' class="form-control py-2" type="text" id="myInput" placeholder="Search by genre or title..." title="Type in a name">
+    <span class="input-group-append">
+    </span>
+  </div>
 </div>
 <br>
 <div class="container-fluid">
@@ -12,6 +16,7 @@
           <h5 class="card-title">{{movie.title}}</h5>
           <p class="card-text">{{movie.genre}}</p>
           <ngb-rating [max]="5" [rate]="getRating(movie.ratings)" *ngIf = "movie.ratings" [readonly]="true"></ngb-rating>
+          <ngb-rating [max]="5" [rate]="0" *ngIf = "!movie.ratings" [readonly]="true"></ngb-rating>
         </div>
         </a>
         <div *ngIf="user.role==='admin'">

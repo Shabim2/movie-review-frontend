@@ -21,7 +21,8 @@ export class AddMovieModalComponent implements OnInit {
       plot: '',
       cast: '',
       image: '',
-      releaseDate: ''
+      releaseDate: '',
+      language: ''
     });
   }
 
